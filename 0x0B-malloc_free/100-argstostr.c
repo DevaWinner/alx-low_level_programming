@@ -1,45 +1,39 @@
-#include "holberton.h"
+#include "main.h"
 #include <stdlib.h>
 
 /**
- * argstostr - Concatenates all arguments of the program into a string;
- *             arguments are separated by a new line in the string.
- * @ac: The number of arguments passed to the program.
- * @av: An array of pointers to the arguments.
- *
- * Return: If ac == 0, av == NULL, or the function fails - NULL.
- *         Otherwise - a pointer to the new string.
- */
+* argstostr - concatenates all the arguments of your program.
+* @ac: number of arguments
+* @av: double pointer to arguments
+*
+* Return:pointer to new string, or NULL if error
+*/
 char *argstostr(int ac, char **av)
 {
-	char *str;
-	int arg, byte, index, size = ac;
-
-	if (ac == 0 || av == NULL)
-		return (NULL);
-
-	for (arg = 0; arg < ac; arg++)
-	{
-		for (byte = 0; av[arg][byte]; byte++)
-			size++;
-	}
-
-	str = malloc(sizeof(char) * size + 1);
-
-	if (str == NULL)
-		return (NULL);
-
-	index = 0;
-
-	for (arg = 0; arg < ac; arg++)
-	{
-		for (byte = 0; av[arg][byte]; byte++)
-			str[index++] = av[arg][byte];
-
-		str[index++] = '\n';
-	}
-
-	str[size] = '\0';
-
-	return (str);
+int i, j, k = 0, n = 0;
+char *s;
+if (ac <= 0 || av == NULL)
+return (NULL);
+for (i = 0; i < ac; i++)
+{
+for (j = 0; av[i][j]; j++)
+n++;
+n++;
+}
+n++;
+s = malloc(n *sizeof(char));
+if (s == NULL)
+return (NULL);
+for (i = 0; i < ac; i++)
+{
+for (j = 0; av[i][j]; j++)
+{
+s[k] = av[i][j];
+k++;
+}
+s[k] = '\n';
+k++;
+}
+s[k] = '\0';
+return (s);
 }
